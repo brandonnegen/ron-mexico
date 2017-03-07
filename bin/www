@@ -1,0 +1,32 @@
+#!/usr/bin/node
+
+import app from '../main';
+import http from 'http';
+import https from 'https';
+import fs from 'fs';
+import path from 'path';
+import getConfig from '../app/getConfig.js';
+
+const appConfig = getConfig('app');
+
+/** Import the global helpers */
+import '../app/helpers.js';
+
+app.listen(appConfig.port, () => {
+  console.log(`Listening on ${appConfig.port} (http)`);
+});
+
+/**
+ * Using https
+ * It's usefull for dev without nginx or apache
+ */
+
+if (appConfig.httpsPort) {
+  const options = {
+    key: fs.readFileSync(path.resolve('keys/key.pem')),
+    cert: fs.readFileSync(path.resolve('keys/cert.pem'))
+  };
+
+  https.createServer(options, app).listen(appConfig.httpsPort);
+  console.log(`Listening on ${appConfig.httpsPort} (https)`);
+}
