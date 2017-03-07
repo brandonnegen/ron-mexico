@@ -5,4 +5,3 @@ export function BadCsrfError (message) {
 }
 BadCsrfError.prototype = Object.create(Error.prototype);
 BadCsrfError.prototype.constructor = BadCsrfError;
-
