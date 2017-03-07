@@ -7,6 +7,6 @@ export default function getConfig (file) {
     const config = require(fullPath).default;
     return config;
   } catch (e) {
-    console.erro(`Configuration file not found at ${fullPath} (import default)`);
+    console.error(`Configuration file not found at ${fullPath} (import default)`);
   }
 };
