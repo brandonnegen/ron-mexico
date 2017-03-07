@@ -1,3 +1,10 @@
+# Commands
+```bash
+yarn dev-server # run the nodemon server
+yarn babel somethig.js # execute file using babel-node
+yarn mocha # run mocha tests
+```
+
 # Babel
 I love the async/await es7 feature, so I use this plugin : babel-plugin-transform-async-to-generator.
 Because I don't like the require, it reminds me the old php code, I prefer the import es6, so I use the babel-plugin-transform-es2015-modules-commonjs plugin to transforms my import to require, which supported by v8 engine.

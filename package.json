@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "mocha": "mocha",
-    "dev-server": "NODE_ENV=dev nodemon --exec babel-node bin/www"
+    "dev-server": "NODE_ENV=dev nodemon --exec babel-node bin/www",
+    "babel": "babel-node"
   },
   "dependencies": {
     "body-parser": "^1.17.1",
