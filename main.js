@@ -1,6 +1,9 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
+import routes from './app/http/routes/routes';
+import { developmentErrors, productionErrors } from './app/errorsHandlers/errorsHandlers';
+import getConfig from './app/getConfig';
 
 const app = express();
 
@@ -15,8 +18,18 @@ app.use(parseJson);
 /** Parse cookie */
 app.use(cookieParser());
 
-/** Import and mount routes */
-import routes from './app/http/routes/routes';
+/** Mount routes */
 app.use('/birds', routes);
+
+/** Error handler */
+if (getConfig('app').env === 'dev') {
+  /* Development Error Handler - Prints stack trace */
+  app.use(developmentErrors);
+} else {
+  // production error handler
+  app.use(productionErrors);
+
+}
+
 
 export default app;

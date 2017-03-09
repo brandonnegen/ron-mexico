@@ -5,14 +5,15 @@
   "license": "MIT",
   "scripts": {
     "mocha": "mocha",
-    "dev-server": "NODE_ENV=dev nodemon --exec babel-node bin/www",
+    "dev-server": "nodemon --exec \"node --require 'dotenv/config' --require 'babel-register' bin/www\"",
     "babel": "babel-node"
   },
   "dependencies": {
     "body-parser": "^1.17.1",
     "cookie-parser": "^1.4.3",
     "dotenv": "^4.0.0",
-    "express": "^4.15.2"
+    "express": "^4.15.2",
+    "winston": "^2.3.1"
   },
   "devDependencies": {
     "babel-cli": "^6.23.0",

@@ -1,5 +1,4 @@
 #!/usr/bin/node
-
 import app from '../main';
 import http from 'http';
 import https from 'https';
