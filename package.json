@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "mocha": "mocha",
+    "mocha": "mocha --compilers js:babel-core/register -w test/*.js",
     "dev-server": "nodemon --exec \"node --require 'dotenv/config' --require 'babel-register' bin/www\"",
     "babel": "babel-node"
   },
