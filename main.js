@@ -2,7 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import routes from './app/http/routes/routes';
-import { developmentErrors, productionErrors, testErrors, joiValidationErrors, mongoValidationErrors } from './app/errorsHandlers/errorsHandlers';
+import { developmentErrors, productionErrors, testErrors, joiValidationErrors, mongoValidationErrors } from './app/errorsHandler/errorsHandler';
 import getConfig from './app/getConfig';
 import chalk from 'chalk';
 

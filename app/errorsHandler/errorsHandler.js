@@ -1,4 +1,4 @@
-import logger, { levelNumberToString } from '../errorsHandlers/logger';
+import logger, { levelNumberToString } from './logger';
 
 /**
  * 
