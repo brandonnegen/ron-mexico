@@ -5,6 +5,7 @@ import https from 'https';
 import fs from 'fs';
 import path from 'path';
 import getConfig from '../app/getConfig.js';
+import chalk from 'chalk';
 
 const appConfig = getConfig('app');
 
@@ -12,7 +13,9 @@ const appConfig = getConfig('app');
 import '../app/helpers.js';
 
 app.listen(appConfig.port, () => {
-  console.log(`Listening on ${appConfig.port} (http)`);
+  console.log(
+    chalk.magenta(`Listening on ${appConfig.port} (http)`)
+  );
 });
 
 /**
@@ -26,6 +29,9 @@ if (appConfig.httpsPort) {
     cert: fs.readFileSync(path.resolve('keys/cert.pem'))
   };
 
-  https.createServer(options, app).listen(appConfig.httpsPort);
-  console.log(`Listening on ${appConfig.httpsPort} (https)`);
+  https.createServer(options, app).listen(appConfig.httpsPort, () => {
+    console.log(
+      chalk.magenta(`Listening on ${appConfig.httpsPort} (https)`)
+    );
+  });
 }
