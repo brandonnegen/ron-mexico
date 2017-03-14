@@ -4,8 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "mocha": "mocha --compilers js:babel-core/register -w test/*.js",
-    "dev-server": "nodemon --exec \"node --require 'dotenv/config' --require 'babel-register' bin/www\"",
+    "mocha": "APP_ENV=test mocha --compilers js:babel-core/register -w test/*.js",
+    "dev-server": "APP_ENV=dev nodemon --exec \"node --require 'dotenv/config' --require 'babel-register' bin/www\"",
     "babel": "babel-node"
   },
   "dependencies": {
