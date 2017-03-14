@@ -108,6 +108,7 @@ export const developmentErrors = function (err, req, res, next) {
   }); */
 };
 
+export const testErrors = (err, req, res, next) => res.status(err.status || 500).json(err.message);
   
 /**
  * 

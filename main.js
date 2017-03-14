@@ -2,7 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import routes from './app/http/routes/routes';
-import { developmentErrors, productionErrors, joiValidationErrors, mongoValidationErrors } from './app/errorsHandlers/errorsHandlers';
+import { developmentErrors, productionErrors, testErrors, joiValidationErrors, mongoValidationErrors } from './app/errorsHandlers/errorsHandlers';
 import getConfig from './app/getConfig';
 import chalk from 'chalk';
 
@@ -33,15 +33,21 @@ app.use('/birds', routes);
 app.use(joiValidationErrors);
 app.use(mongoValidationErrors);
 
-/** Error handler */
-if (appConfig.env === 'dev') {
-  /* Development Error Handler - Prints stack trace */
-  console.log(chalk.cyan('App use the developmentErrorsHandler'));
-  app.use(developmentErrors);
-} else {
-  console.log(chalk.cyan('App use the productionErrorsHandler'));
-  app.use(productionErrors);
+switch (appConfig.env) {
+  case 'dev': 
+    /* Development Error Handler - Prints stack trace */
+    console.log(chalk.cyan('App use the developmentErrorsHandler'));
+    app.use(developmentErrors);
+    break;
+  
+  case 'prod':
+    console.log(chalk.cyan('App use the productionErrorsHandler'));
+    app.use(productionErrors);
+    break;
+  
+  case 'test': 
+    console.log(chalk.cyan('App use the testErrorsHandler'));
+    app.use(testErrors);
 }
-
 
 export default app;
